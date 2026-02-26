@@ -1,6 +1,11 @@
 package com.dave.studentapi.entity;
 
+import com.dave.studentapi.Course;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -11,6 +16,10 @@ public class Student {
 
     private String name;
     private String email;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "students")
+    private List<Course>courses=new ArrayList<>();
 
     public Student(){}
 
@@ -41,5 +50,14 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
