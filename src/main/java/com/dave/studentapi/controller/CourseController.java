@@ -30,4 +30,10 @@ public class CourseController {
     public void deleteCourse(@PathVariable Long id){
         courseService.deleteCourse(id);
     }
+    @PostMapping("/{courseId}/students/{studentId}")
+    public Course enrollStudent(@PathVariable Long courseId,
+                                @PathVariable Long studentId) {
+
+        return courseService.enrollStudent(courseId, studentId);
+    }
 }

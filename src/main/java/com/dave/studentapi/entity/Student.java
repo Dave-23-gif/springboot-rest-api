@@ -19,7 +19,11 @@ public class Student {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "students")
-    private List<Course>courses=new ArrayList<>();
+    private List<Course> courses=new ArrayList<>();
+
+    public List<Course> getCourses(){
+        return courses;
+    }
 
     public Student(){}
 
@@ -50,6 +54,13 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public void addCourse(Course course) {
+        course.addStudent(this);
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     @Override

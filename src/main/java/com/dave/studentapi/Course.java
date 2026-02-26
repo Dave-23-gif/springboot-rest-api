@@ -26,7 +26,7 @@ public class Course {
 
 
 
-    private Course(){}
+    public Course(){}
 
     public Course(String title) {
         this.title = title;
@@ -55,14 +55,14 @@ public class Course {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
-//    public void addStudent(Student student){
-//        students.add(student);
-//        students.getCourses().add(this);
-//    }
-//    public void removeStudent(Student student) {
-//        students.remove(student);
-//        student.getCourses().remove(this);
-//    }
+    public void addStudent(Student student){
+        students.add(student);
+       student.getCourses().add(this);
+    }
+    public void removeStudent(Student student) {
+        students.remove(student);
+        student.getCourses().remove(this);
+    }
 
     @Override
     public String toString() {
